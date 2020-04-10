@@ -64,15 +64,21 @@ class Database {
         return $this->json($result);
     }
 
-    
-
-    function serch($query){
-    }
-
     function json($data) {
         return json_encode($data);
-    }
 
+    }
+    
+    function safeSQLParams(&$params) {
+        if (is_array($params)) {
+            array_walk($params, function (&$value, $key) {
+                   $value = $this->con->real_escape_string($value);
+            });
+        } else if (is_string($params)) {
+            $params = $this->con->real_escape_string($params);
+
+        }
+    }
 }
 
 ?>

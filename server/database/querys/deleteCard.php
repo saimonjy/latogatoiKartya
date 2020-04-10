@@ -9,10 +9,13 @@ if (!$_GET['id']) {
     ]];  
     die(json_encode($result));
 }
+$get = $_GET['id'];
+$db = new Database();
 
-$query = 'DELETE FROM Card WHERE Card.id = ("' . $_GET['id'] .'")';
+$db->safeSQLParams($get);
+$query = 'DELETE FROM Card WHERE Card.id = '.$get;
 
 //2. $post eltarolasa az adatbazisban
-$db = new Database();
+
 echo $db->delete($query);
 ?>
