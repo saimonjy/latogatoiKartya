@@ -1,0 +1,56 @@
+<p>new-card works!</p>
+<form id="form1" [formGroup]="cardForm" (ngSubmit)="onSubmit()">
+    <div>
+        <label>
+            
+            elotag
+            <select formControlName="elotag">
+                <option> </option>
+                <option>dr</option>
+                <option>if</option>
+                <option>idosebb</option>
+            </select>
+        </label>
+    </div>
+    <div>
+        <label>
+            vezeteknev
+            <input type="text" formControlName="vezeteknev" />
+            
+        </label>
+    </div>
+    <div>
+        <label>
+            keresztnev
+            <input type="text" formControlName="keresztnev" />
+        </label>
+    </div>
+    <div>
+        <label>
+            intezmenynev
+            <input type="text" formControlName="intezmeny_nev" />
+        </label>
+    </div>
+    <div>
+        <label>
+            rendfokozat
+            <input type="text" formControlName="rendfokozat" />
+        </label>
+    </div>
+    <div>
+        <label>
+            foto
+            <button routerLink="/foto">foto keszitese</button>
+        </label>
+    </div>
+    <span *ngIf="!id">
+        <input type="submit" value="uj kartya keszitese"/>        
+    </span>
+    <span *ngIf="id">
+        <input type="submit" value="modosit"/>
+    </span>
+    <span>
+        <button routerLink="/">megse</button>
+    </span>
+
+</form>
