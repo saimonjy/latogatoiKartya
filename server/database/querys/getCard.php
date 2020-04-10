@@ -8,7 +8,8 @@ require(dirname(dirname(__DIR__)) . '/includes/config.php');
         die(json_encode($result));
     }
     $db = new Database();
+    $get = $_GET['id'];
+    $db->safeSQLParams($get);
     $query = 'SELECT * FROM Card WHERE Card.id = ("' . $_GET['id'] .'")';
-    $db = new Database();
     echo $db->select($query);
 ?>
