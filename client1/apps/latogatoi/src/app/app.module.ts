@@ -13,6 +13,8 @@ import { PrintViewComponent } from './print-view/print-view.component';
 import { WebCamComponent } from './web-cam/web-cam.component';
 
 
+import {FormsModule} from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -22,13 +24,14 @@ import { WebCamComponent } from './web-cam/web-cam.component';
     CardDataComponent, 
     TakePhotoComponent, 
     PrintViewComponent,
-     WebCamComponent,
+    WebCamComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     WebcamModule,
 
   ],
