@@ -8,7 +8,7 @@
   </tr>
   <tr *ngFor="let card of (httpGetCards | async)">
     <td>{{card.id}}</td>
-    <td>{{card.elotag}} {{card.vezeteknev}} {{card.veresztnev}}</td>
+    <td>{{card.elotag}} {{card.vezeteknev}} {{card.keresztnev}}</td>
     <td>{{card.rendfokozat}}</td>
     <td><button [routerLink]="['/kartya',card.id]">modosit</button></td>
     <td><button (click)="delete(card.id)">torles</button></td>
