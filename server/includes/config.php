@@ -7,4 +7,5 @@ $mysqlconfig = [
     'db_name' => 'Latogatoi',
 ];
 require($projectRoot . '/database/database.php');
+
 ?>
