@@ -10,6 +10,7 @@ import { NewCardComponent } from './new-card/new-card.component';
 import { CardDataComponent } from './card-data/card-data.component';
 import { PrintViewComponent } from './print-view/print-view.component';
 import {FormsModule} from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import {FormsModule} from '@angular/forms';
     ReactiveFormsModule,
     FormsModule,
     WebcamModule,
+    BrowserAnimationsModule,
 
   ],
   providers: [],
