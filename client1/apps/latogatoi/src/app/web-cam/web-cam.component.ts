@@ -35,6 +35,7 @@ export class WebCamComponent implements OnInit {
   }
 
   public triggerSnapshot(): void {
+    console.log(this.webcamImage)
     this.trigger.next();
   }
 

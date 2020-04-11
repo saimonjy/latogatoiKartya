@@ -2,9 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, NgModel } from '@angular/forms';
 import { DbServiceService } from '../db-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { format } from 'url';
-
+import { Subscription, Subject, Observable } from 'rxjs';
+import { WebcamImage, WebcamInitError,WebcamUtil } from 'ngx-webcam';
 
 @Component({
   selector: 'client1-new-card',
@@ -27,35 +26,21 @@ export class NewCardComponent implements OnInit, OnDestroy{
     rendfokozat: new FormControl(null),
     img: new FormControl(null),
   });
-  
+  fotoKeszites = false ;
+  trigger: Subject<void> = new Subject<void>();
+  webcamImage: WebcamImage = null;
+  allowCameraSwitch = true;
+  multipleWebcamsAvailable = false;
+  nextWebcam: Subject<boolean|string> = new Subject<boolean|string>();
+  videoOptions: MediaTrackConstraints = {
+    // width: {ideal: 1024},
+    // height: {ideal: 576}
+  };
+  deviceId: string;
+  showWebcam = true;
+  errors: WebcamInitError[] = [];
 
   constructor(private dbService:DbServiceService, private route: ActivatedRoute, private router: Router) { }
-  goCardListComponent(){
-    this.router.navigate(['/']);
-  }
-  onSubmit(): void {
-    if(!this.id){
-      // feliratkozom
-      
-      this.saveSubscription = this.dbService.save(this.cardForm).subscribe((result)=>{
-        console.log(result);
-      });
-      console.log('save');
-    }
-    else{
-      this.updateSubscription = this.dbService.update(this.id, this.cardForm).subscribe((result)=>{
-        console.log(result);
-        if(result.error){
-          alert(result.error.message);
-        }
-        else{
-          this.goCardListComponent();
-        }
-        
-      });
-    }
-    
-  }
   ngOnInit(): void {
     console.log('newCardComponent init');
     //feliraatkozom visszater azzal az idvel amit az app-routig moduleban kertem hogy adja hozza a cimsorba
@@ -74,10 +59,12 @@ export class NewCardComponent implements OnInit, OnDestroy{
             img: result[0].img,
           });
         })); 
-        
       }
     });
-    
+    WebcamUtil.getAvailableVideoInputs()
+      .then((mediaDevices: MediaDeviceInfo[]) => {
+        this.multipleWebcamsAvailable = mediaDevices && mediaDevices.length > 1;
+      });
     // this.subscription.add(this.route.paramMap.subscribe((params)=>{
     //   this.id = params.get('id');
     //   console.log(params.get('id'));
@@ -99,4 +86,56 @@ export class NewCardComponent implements OnInit, OnDestroy{
     }
     
   }
+  onSubmit(): void {
+    if(!this.id){
+      // feliratkozom
+      
+      this.saveSubscription = this.dbService.save(this.cardForm).subscribe(this.handleRequest);
+      console.log('save');
+    }
+    else{
+      this.updateSubscription = this.dbService.update(this.id, this.cardForm).subscribe(this.handleRequest);
+    }   
+  }
+  handleRequest(result: any){
+    console.log(result);
+    if(result.error){
+      alert(result.error.message);
+    }
+    else{
+      this.router.navigate(['foto'],{relativeTo: this.route});
+    }
+  }
+  public handleImage(webcamImage: WebcamImage): void {
+    console.info('received webcam image', webcamImage);
+    this.cardForm.controls['img'].setValue(webcamImage.imageAsDataUrl);
+  }
+  public get nextWebcamObservable(): Observable<boolean|string> {
+    return this.nextWebcam.asObservable();
+  }
+  public cameraWasSwitched(deviceId: string): void {
+    console.log('active device: ' + deviceId);
+    this.deviceId = deviceId;
+  }
+  public handleInitError(error: WebcamInitError): void {
+    this.errors.push(error);
+  }
+  public triggerSnapshot(): void {
+    console.log(this.cardForm.controls['img'].value);
+    this.trigger.next();
+  }
+  public get triggerObservable(): Observable<void> {
+    return this.trigger.asObservable();
+  }
+  public toggleWebcam(): void {
+    this.showWebcam = !this.showWebcam;
+  }
+  public showNextWebcam(directionOrDeviceId: boolean|string): void {
+    // true => move forward through devices
+    // false => move backwards through devices
+    // string => move to device with given deviceId
+    this.nextWebcam.next(directionOrDeviceId);
+  }
+
+  
 }
