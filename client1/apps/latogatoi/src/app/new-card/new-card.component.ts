@@ -84,6 +84,9 @@ export class NewCardComponent implements OnInit, OnDestroy{
     if(this.idSubscription){
       this.idSubscription.unsubscribe();
     }
+    if(this.subscription){
+      this.subscription.unsubscribe();
+    }
     
   }
   onSubmit(): void {

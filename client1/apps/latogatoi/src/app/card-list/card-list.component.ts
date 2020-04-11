@@ -11,7 +11,7 @@ import { Subscription, Observer, Subject } from 'rxjs';
 export class CardListComponent implements OnInit, OnDestroy{
 
   httpGetCards: any;
-  subscription: Subscription;
+  deleteSubscription: Subscription;
   formdata = new FormData; 
   
   constructor(private dbService: DbServiceService){
@@ -20,8 +20,8 @@ export class CardListComponent implements OnInit, OnDestroy{
    ngOnInit(): void {
   }
   ngOnDestroy(): void {
-    if(this.subscription != null){
-    this.subscription.unsubscribe();
+    if(this.deleteSubscription != null){
+    this.deleteSubscription.unsubscribe();
     }
   }
   getAllCards(){
@@ -29,14 +29,14 @@ export class CardListComponent implements OnInit, OnDestroy{
   }
   delete(id){
     if(confirm('valoban törülni kivanja ezt a kártyát?')){
-      this.subscription.add(this.dbService.delete(id).subscribe((result)=>{
+      this.deleteSubscription =this.dbService.delete(id).subscribe((result)=>{
         if(result.error){
           alert(result.error.message);
         }
         else{
           this.getAllCards();
         }
-      }));
+      });
     }
   };
 }
