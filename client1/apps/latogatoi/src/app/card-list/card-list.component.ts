@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DbServiceService } from '../db-service.service';
 import { Subscription, Observer, Subject } from 'rxjs';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'client1-card-list',
@@ -11,38 +10,33 @@ import { Router } from '@angular/router';
 
 export class CardListComponent implements OnInit, OnDestroy{
 
-
   httpGetCards: any;
-  deleteSubscription: Subscription;
+  subscription: Subscription;
   formdata = new FormData; 
   
-  constructor(private dbService: DbServiceService, private router: Router){
+  constructor(private dbService: DbServiceService){
     this.getAllCards();
    }
-
+   ngOnInit(): void {
+  }
+  ngOnDestroy(): void {
+    if(this.subscription != null){
+    this.subscription.unsubscribe();
+    }
+  }
   getAllCards(){
     this.httpGetCards = this.dbService.all();
   }
   delete(id){
     if(confirm('valoban törülni kivanja ezt a kártyát?')){
-      this.deleteSubscription = this.dbService.delete(id).subscribe((result)=>{
-        console.log(result);
+      this.subscription.add(this.dbService.delete(id).subscribe((result)=>{
         if(result.error){
           alert(result.error.message);
         }
         else{
           this.getAllCards();
         }
-      });
+      }));
     }
-    console.log('delete:' + id); 
   };
-
-  ngOnInit(): void {
-  }
-  ngOnDestroy(): void {
-    if(this.deleteSubscription != null){
-    this.deleteSubscription.unsubscribe();
-    }
-  }
 }
