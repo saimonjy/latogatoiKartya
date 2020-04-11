@@ -10,7 +10,7 @@ import { NewCardComponent } from './new-card/new-card.component';
 import { CardDataComponent } from './card-data/card-data.component';
 import { TakePhotoComponent } from './take-photo/take-photo.component';
 import { PrintViewComponent } from './print-view/print-view.component';
-import { WebCamComponent } from './web-cam/web-cam.component';
+
 
 
 import {FormsModule} from '@angular/forms';
@@ -24,7 +24,6 @@ import {FormsModule} from '@angular/forms';
     CardDataComponent, 
     TakePhotoComponent, 
     PrintViewComponent,
-    WebCamComponent,
   ],
   imports: [
     BrowserModule,
