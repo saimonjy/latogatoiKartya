@@ -11,6 +11,19 @@ import { CardDataComponent } from './card-data/card-data.component';
 import { PrintViewComponent } from './print-view/print-view.component';
 import {FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatIconModule} from '@angular/material/icon';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
+
+
+
 
 @NgModule({
   declarations: [
@@ -19,6 +32,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NewCardComponent, 
     CardDataComponent, 
     PrintViewComponent,
+    
+    
   ],
   imports: [
     BrowserModule,
@@ -28,7 +43,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     WebcamModule,
     BrowserAnimationsModule,
-
+    MatCardModule,
+    MatGridListModule,
+    MatListModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatButtonModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

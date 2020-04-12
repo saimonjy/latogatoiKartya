@@ -1,73 +1,106 @@
-<p>new-card works!</p>
-<form id="form1" [formGroup]="cardForm" (ngSubmit)="onSubmit()">
-    <div>
-        <label>
-            
-            elotag
-            <select formControlName="elotag">
-                <option> </option>
-                <option>dr</option>
-                <option>if</option>
-                <option>idosebb</option>
-            </select>
-        </label>
-    </div>
-    <div>
-        <label>
-            vezeteknev
-            <input type="text" formControlName="vezeteknev" />
-            
-        </label>
-    </div>
-    <div>
-        <label>
-            keresztnev
-            <input type="text" formControlName="keresztnev" />
-        </label>
-    </div>
-    <div>
-        <label>
-            intezmenynev
-            <input type="text" formControlName="intezmeny_nev" />
-        </label>
-    </div>
-    <div>
-        <label>
-            rendfokozat
-            <input type="text" formControlName="rendfokozat" />
-        </label>
-    </div>
-    <div>
-        <label>
-            foto
-            <button type="button" (click)="fotoKeszites=!fotoKeszites">
-                <img *ngIf="!cardForm.controls['img'].value" height="90" src="./assets/portre.gif">
-                <img *ngIf="cardForm.controls['img'].value" height="90" [src]="cardForm.controls['img'].value">
-            </button>
-        </label>
-    </div>
-    <div *ngIf="fotoKeszites">
-        <webcam [height]="300"
-                [width]="300"
-                [trigger]="triggerObservable"
-                (imageCapture)="handleImage($event)"
-                [allowCameraSwitch]="allowCameraSwitch"
-                [switchCamera]="nextWebcamObservable"
-                [imageQuality]="1"
-                (cameraSwitched)="cameraWasSwitched($event)"
-                (initError)="handleInitError($event)"
-        ></webcam>
-        <br/>
-        <button type="button" class="actionBtn" (click)="triggerSnapshot();">foto készítés</button>
-    </div>
-    <span *ngIf="!id">
-        <input type="submit" value="uj kartya keszitese"/>        
-    </span>
-    <span *ngIf="id">
-        <input type="submit" value="modosit"/>
-    </span>
-    <span>
-        <button type="button" routerLink="/">megse</button>
-    </span>
+    <p>new-card works!</p>
+<mat-card class="card">
+    <mat-card-content>
+        <form id="form1" [formGroup]="cardForm" (ngSubmit)="onSubmit()">
+            <table>
+                <tr>
+                    <td><br>
+                        <mat-form-field>
+                            <mat-select formControlName="elotag">
+                                <mat-option> </mat-option>
+                                <mat-option value="dr">dr</mat-option>
+                                <mat-option value="if">if</mat-option>
+                                <mat-option value="idosebb">idosebb</mat-option>
+                            </mat-select>
+                        </mat-form-field> 
+                    </td>
+                </tr>
+                <tr>
+                    <td>            
+                        <mat-form-field appearance="legacy">
+                        <mat-label>Vezetéknév</mat-label>
+                        <input formControlName="vezeteknev" matInput>
+                        </mat-form-field>            
+                    </td>
+                </tr>
+                <tr>
+                    <td>            
+                        <mat-form-field appearance="legacy">
+                        <mat-label>Keresztnév</mat-label>
+                        <input formControlName="keresztnev" matInput>
+                        </mat-form-field>
+                    
+                    </td>
+                </tr>
+                    <tr>
+                        <td>            
+                        <mat-form-field appearance="legacy">
+                        <mat-label>Intézmény név</mat-label>
+                        <input formControlName="intezmeny_nev" matInput>
+                        </mat-form-field>            
+                    </td>
+                </tr>
+                <tr>
+                    <td>            
+                        <mat-form-field appearance="legacy">
+                        <mat-label>rendfokozat</mat-label>
+                        <input formControlName="rendfokozat" matInput>
+                        </mat-form-field>            
+                    </td>
+                </tr>
+                <tr>
+                    <td>            
+                        <button type="button" mat-button (click)="fotoKeszites=!fotoKeszites">
+                            <img *ngIf="!cardForm.controls['img'].value" height="90" src="./assets/portre.gif">
+                            <img *ngIf="cardForm.controls['img'].value" height="90" [src]="cardForm.controls['img'].value">
+                        </button>
+                    </td>
+                </tr>
+                <tr *ngIf="fotoKeszites">
+                    <webcam 
+                        [height]="300"
+                        [width]="300"
+                        [trigger]="triggerObservable"
+                        (imageCapture)="handleImage($event)"
+                        [allowCameraSwitch]="allowCameraSwitch"
+                        [switchCamera]="nextWebcamObservable"
+                        [imageQuality]="1"
+                        (cameraSwitched)="cameraWasSwitched($event)"
+                        (initError)="handleInitError($event)">
+                    </webcam>
+                    <br/>
+                    <button type="button" mat-button (click)="triggerSnapshot();">
+                        foto készítés
+                    </button>
+                </tr>
+                <br>
+                <tr>
+                    <td *ngIf="!id">
+                        <button mat-raised-button >uj kartya keszitese</button>
+                    </td>
+                    <td *ngIf="id">
+                        <button mat-raised-button >Módosít</button>
+                    </td>
+                    <a mat-raised-button routerLink="/">Mégse</a>
+                </tr>
+            </table>
+        </form>
+    </mat-card-content>
+</mat-card>
+<!-- 
 
-</form>
+<div *ngIf="!id">
+    
+        <input type="submit" value="uj kartya keszitese"/>        
+    
+</div>
+<div *ngIf="id">
+    
+        <input type="submit" value="modosit"/>
+    
+</div>
+<div>
+    
+        <button type="button" routerLink="/">megse</button>
+    
+</div> -->
