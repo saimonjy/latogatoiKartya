@@ -1,4 +1,3 @@
-    <p>new-card works!</p>
 <mat-card class="card">
     <mat-card-content>
         <form id="form1" [formGroup]="cardForm" (ngSubmit)="onSubmit()">
@@ -56,6 +55,27 @@
                         </button>
                     </td>
                 </tr>
+                <br>
+                <tr>
+                    <td *ngIf="!id">
+                        <button mat-raised-button >uj kartya keszitese</button>
+                    </td>
+                    <td *ngIf="id">
+                        <button mat-raised-button >Módosít</button>
+                    </td>
+                    <td>
+                        <a mat-raised-button routerLink="/">Mégse</a>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </mat-card-content>
+</mat-card>
+<mat-card class="card">
+    <mat-card-content>
+        <form id="form1" [formGroup]="cardForm" (ngSubmit)="onSubmit()">
+            <table>
+                
                 <tr *ngIf="fotoKeszites">
                     <webcam 
                         [height]="300"
@@ -69,38 +89,12 @@
                         (initError)="handleInitError($event)">
                     </webcam>
                     <br/>
-                    <button type="button" mat-button (click)="triggerSnapshot();">
+                    <button type="button" mat-raised-button (click)="triggerSnapshot();">
                         foto készítés
                     </button>
                 </tr>
                 <br>
-                <tr>
-                    <td *ngIf="!id">
-                        <button mat-raised-button >uj kartya keszitese</button>
-                    </td>
-                    <td *ngIf="id">
-                        <button mat-raised-button >Módosít</button>
-                    </td>
-                    <a mat-raised-button routerLink="/">Mégse</a>
-                </tr>
             </table>
         </form>
     </mat-card-content>
 </mat-card>
-<!-- 
-
-<div *ngIf="!id">
-    
-        <input type="submit" value="uj kartya keszitese"/>        
-    
-</div>
-<div *ngIf="id">
-    
-        <input type="submit" value="modosit"/>
-    
-</div>
-<div>
-    
-        <button type="button" routerLink="/">megse</button>
-    
-</div> -->

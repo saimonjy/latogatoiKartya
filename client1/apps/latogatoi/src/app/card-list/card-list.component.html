@@ -1,4 +1,4 @@
-<table>
+<!-- <table>
   <tr>
     <th>azonosito</th>
     <th>teljes nev</th>
@@ -17,4 +17,25 @@
     <td><button [routerLink]="['/kartya',card.id]">modosit</button></td>
     <td><button (click)="delete(card.id)">torles</button></td>
   </tr>
-</table>
+</table> -->
+<mat-card class="card" *ngFor="let card of (httpGetCards | async)">
+  <mat-card-header>
+    <mat-card-title >{{card.intezmeny_nev}}</mat-card-title>
+    <mat-card-subtitle><p>sorszam: {{card.id}}</p></mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <table>
+      <tr>
+        <th rowspan="4"><img mat-card-md-image height="90" [src]="card.img"></th>
+        <td> <h1>{{card.elotag}} {{card.vezeteknev}} {{card.keresztnev}}</h1></td>
+      </tr>
+      <tr>
+        <td align="right">  {{card.rendfokozat}}</td>
+      </tr>
+      <tr>
+      </tr>
+        <a mat-raised-button [routerLink]="['/kartya',card.id]">modosit</a>
+        <button mat-raised-button (click)="delete(card.id)">torles</button>
+    </table>
+  </mat-card-content>
+</mat-card>
