@@ -1,5 +1,5 @@
 <?php
-    require(dirname(dirname(__DIR__)) . '/includes/config.php');
+    require(dirname(__DIR__) . '/includes/config.php');
 
     $post = json_decode(file_get_contents('php://input'), true);
 
