@@ -5,9 +5,6 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CardListComponent } from './card-list/card-list.component';
-import { NewCardComponent } from './new-card/new-card.component';
-import { PrintViewComponent } from './print-view/print-view.component';
 import {FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
@@ -20,13 +17,12 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
+import {LatogatoiCsoportokModule} from './latogatoi-csoportok/latogatoi-csoportok.module';
+import {KartyakModule} from './kartyak/kartyak.module';
 
 @NgModule({
   declarations: [
     AppComponent, 
-    CardListComponent, 
-    NewCardComponent, 
-    PrintViewComponent,    
   ],
   imports: [
     BrowserModule,
@@ -48,6 +44,8 @@ import {MatInputModule} from '@angular/material/input';
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
+    LatogatoiCsoportokModule,
+    KartyakModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

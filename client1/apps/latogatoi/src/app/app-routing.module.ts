@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CardListComponent } from './card-list/card-list.component';
-import { NewCardComponent } from './new-card/new-card.component';
-import { PrintViewComponent } from './print-view/print-view.component';
+import { CardListComponent } from './kartyak/card-list/card-list.component';
+import { NewCardComponent } from './kartyak/new-card/new-card.component';
+import { PrintViewComponent } from './kartyak/print-view/print-view.component';
 
 const routes: Routes = [
   {path:'', component: CardListComponent},

@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, NgModel } from '@angular/forms';
-import { DbServiceService } from '../db-service.service';
+import { DbServiceService } from '../../db-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, Subject, Observable } from 'rxjs';
 import { WebcamImage, WebcamInitError, WebcamUtil } from 'ngx-webcam';
