@@ -8,8 +8,8 @@
     <div class="rf">{{card.rendfokozat}}</div>
     <div class="bt">
       <a mat-raised-button [routerLink]="['/kartya',card.id]">szerkesztés</a>
-      <button mat-raised-button (click)="delete(card.id)">törlés</button>
       <a mat-raised-button [routerLink]="['/nyomtatas',card.id]">nyomtatási kép</a>
+      <button type="button" mat-raised-button (click)="delete(card.id)">törlés</button>
     </div>
   </mat-card-content>
 </mat-card>

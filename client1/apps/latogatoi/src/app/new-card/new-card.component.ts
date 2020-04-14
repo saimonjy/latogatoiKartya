@@ -92,6 +92,7 @@ export class NewCardComponent implements OnInit, OnDestroy {
       this.updateSubscription = this.dbService.update(this.id, this.cardForm).subscribe((result) => {
         this.handleRequest(result);
       });
+      console.log('onsubmit')
     }
   }
 
