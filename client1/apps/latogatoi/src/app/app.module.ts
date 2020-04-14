@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CardListComponent } from './card-list/card-list.component';
 import { NewCardComponent } from './new-card/new-card.component';
-import { CardDataComponent } from './card-data/card-data.component';
 import { PrintViewComponent } from './print-view/print-view.component';
 import {FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -27,7 +26,6 @@ import {MatInputModule} from '@angular/material/input';
     AppComponent, 
     CardListComponent, 
     NewCardComponent, 
-    CardDataComponent, 
     PrintViewComponent,    
   ],
   imports: [
