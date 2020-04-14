@@ -5,7 +5,7 @@
 
     if (!$post['vezeteknev']) {
         $result = ['error' => [
-            'message' => 'ervenytelen azonosito: ' . $post['vezeteknev'],
+            'message' => 'Kérem töltse ki a vezetéknév mezőt: ' . $post['vezeteknev'],
         ]];
         die(json_encode($result));
     }

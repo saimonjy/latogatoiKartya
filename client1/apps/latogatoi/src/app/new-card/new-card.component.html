@@ -6,10 +6,10 @@
                     <td><br>
                         <mat-form-field>
                             <mat-select formControlName="elotag">
-                                <mat-option> </mat-option>
+                                <mat-option value="null"> </mat-option>
                                 <mat-option value="dr">dr</mat-option>
                                 <mat-option value="if">if</mat-option>
-                                <mat-option value="idosebb">idosebb</mat-option>
+                                <mat-option value="idősebb">idősebb</mat-option>
                             </mat-select>
                         </mat-form-field> 
                     </td>
@@ -58,10 +58,10 @@
                 <br>
                 <tr>
                     <td *ngIf="!id">
-                        <button mat-raised-button >uj kartya keszitese</button>
+                        <button mat-raised-button >új kártya készitese</button>
                     </td>
                     <td *ngIf="id">
-                        <button mat-raised-button >Módosít</button>
+                        <button mat-raised-button >Mentés</button>
                     </td>
                     <td>
                         <a mat-raised-button routerLink="/">Mégse</a>
@@ -90,7 +90,7 @@
                     </webcam>
                     <br/>
                     <button type="button" mat-raised-button (click)="triggerSnapshot();">
-                        foto készítés
+                        Foto Készítés
                     </button>
                 </tr>
                 <br>

@@ -9,29 +9,25 @@ export class DbServiceService {
 
   constructor(private http: HttpClient) { }
 
-  all(){
+  public all(){
     return this.http.get('http://localhost/rendeszeti/Poc/latogatoikartya/server/database/querys/allCards.php');
   }
-  get(id: String){
-    console.log('delete service:' + id);
+  public get(id: String){
     return this.http
-      // beagyaztuk/kozbeszurtuk az id valtozot az url stringjebe?=${id} `` hasznalj!!!
       .get<any>(`http://localhost/rendeszeti/Poc/latogatoikartya/server/database/querys/getCard.php?id=${id}`);
   }
-  save(formGroup: FormGroup){
+  public save(formGroup: FormGroup){
     return this.http
       .post<any>('http://localhost/rendeszeti/Poc/latogatoikartya/server/database/querys/newCards.php',formGroup.value);
       
   }
-  update(id: String, formGroup: FormGroup){
+  public update(id: String, formGroup: FormGroup){
     return this.http
       .post<any>(`http://localhost/rendeszeti/Poc/latogatoikartya/server/database/querys/updateCard.php?id=${id}`,formGroup.value);
       
   }
-  delete(id: String){
-    console.log('delete service:' + id);
+  public delete(id: String){
     return this.http
-      // beagyaztuk/kozbeszurtuk az id valtozot az url stringjebe?=${id} `` hasznalj!!!
       .get<any>(`http://localhost/rendeszeti/Poc/latogatoikartya/server/database/querys/deleteCard.php?id=${id}`);
   }
 }

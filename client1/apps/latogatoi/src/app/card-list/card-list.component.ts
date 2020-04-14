@@ -29,7 +29,7 @@ export class CardListComponent implements OnInit, OnDestroy{
   }
   
   delete(id: any){
-    if(confirm('valoban törülni kivanja ezt a kártyát?')){
+    if(confirm('Valóban törölni kívánja ezt a kártyát?')){
       this.subscription.add(this.dbService.delete(id).subscribe((result)=>{
         if(result.error){
           alert(result.error.message);

@@ -22,18 +22,13 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent, 
     CardListComponent, 
     NewCardComponent, 
     CardDataComponent, 
-    PrintViewComponent,
-    
-    
+    PrintViewComponent,    
   ],
   imports: [
     BrowserModule,

@@ -7,9 +7,9 @@
     <div class="kn">{{card.keresztnev}}</div>
     <div class="rf">{{card.rendfokozat}}</div>
     <div class="bt">
-      <a mat-raised-button [routerLink]="['/kartya',card.id]">szerkesztés</a>
-      <a mat-raised-button [routerLink]="['/nyomtatas',card.id]">nyomtatási kép</a>
-      <button type="button" mat-raised-button (click)="delete(card.id)">törlés</button>
+      <a mat-raised-button [routerLink]="['/kartya',card.id]">Szerkesztés</a>
+      <a mat-raised-button [routerLink]="['/nyomtatas',card.id]">Nyomtatási kép</a>
+      <button type="button" mat-raised-button (click)="delete(card.id)">Törlés</button>
     </div>
   </mat-card-content>
 </mat-card>

@@ -11,12 +11,9 @@ import { WebcamImage, WebcamInitError, WebcamUtil } from 'ngx-webcam';
   styleUrls: ['./new-card.component.css']
 })
 export class NewCardComponent implements OnInit, OnDestroy {
-  subscription = new Subscription();
-  saveSubscription: Subscription;
-  updateSubscription: Subscription;
-  idSubscription: Subscription;
-  id: String;
-  cardForm = new FormGroup({
+  private subscription = new Subscription();
+  public id: String;
+  public cardForm = new FormGroup({
     elotag: new FormControl(null),
     vezeteknev: new FormControl(null),
     keresztnev: new FormControl(null),
@@ -24,13 +21,13 @@ export class NewCardComponent implements OnInit, OnDestroy {
     rendfokozat: new FormControl(null),
     img: new FormControl(null),
   });
-  fotoKeszites = false;
-  trigger = new Subject<void>();
-  allowCameraSwitch = true;
-  multipleWebcamsAvailable = false;
-  nextWebcam = new Subject<boolean | string>();
-  deviceId: string;
-  errors: WebcamInitError[] = [];
+  public fotoKeszites = false;
+  public trigger = new Subject<void>();
+  public allowCameraSwitch = true;
+  public multipleWebcamsAvailable = false;
+  public nextWebcam = new Subject<boolean | string>();
+  public deviceId: string;
+  public errors: WebcamInitError[] = [];
 
   constructor(
     private dbService: DbServiceService, 
@@ -39,14 +36,10 @@ export class NewCardComponent implements OnInit, OnDestroy {
   ) { }
   
   ngOnInit(): void {
-    console.log('newCardComponent init');
-    //feliraatkozom visszater azzal az idvel amit az app-routig moduleban kertem hogy adja hozza a cimsorba
-    this.idSubscription = this.route.paramMap.subscribe((params) => {
+    this.subscription.add(this.route.paramMap.subscribe((params) => {
       this.id = params.get('id');
-      console.log('parameterek: ' + params.get('id'));
       if (this.id) {
         this.subscription.add(this.dbService.get(this.id).subscribe((result) => {
-          //a CardForm.setValue- nak atadhato a teljes json ha minden eleme benne van a formban.
           this.cardForm.setValue({
             elotag: result[0].elotag,
             vezeteknev: result[0].vezeteknev,
@@ -57,7 +50,7 @@ export class NewCardComponent implements OnInit, OnDestroy {
           });
         }));
       }
-    });
+    }));
     WebcamUtil.getAvailableVideoInputs()
       .then((mediaDevices: MediaDeviceInfo[]) => {
         this.multipleWebcamsAvailable = mediaDevices && mediaDevices.length > 1;
@@ -65,39 +58,22 @@ export class NewCardComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    console.log('newCardComponent destroy');
-    if (this.saveSubscription) {
-      this.saveSubscription.unsubscribe();
-    }
-    if (this.updateSubscription) {
-      this.updateSubscription.unsubscribe();
-
-    }
-    if (this.idSubscription) {
-      this.idSubscription.unsubscribe();
-    }
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
+    this.subscription.unsubscribe();
   }
-
   onSubmit(): void {
     if (!this.id) {
-      this.saveSubscription = this.dbService.save(this.cardForm).subscribe((result) => {
+      this.subscription.add(this.dbService.save(this.cardForm).subscribe((result) => {
         this.handleRequest(result);
-      });
-      console.log('save');
+      }));
     }
     else {
-      this.updateSubscription = this.dbService.update(this.id, this.cardForm).subscribe((result) => {
+      this.subscription.add(this.dbService.update(this.id, this.cardForm).subscribe((result) => {
         this.handleRequest(result);
-      });
-      console.log('onsubmit')
+      }));
     }
   }
 
-  handleRequest(result: any) {
-    console.log(result);
+  public handleRequest(result: any) {
     if (result.error) {
       alert(result.error.message);
     }
@@ -106,20 +82,15 @@ export class NewCardComponent implements OnInit, OnDestroy {
     }
   }
 
-  //kep kezelese : parameterken kap egy WabcamImage tipust
   public handleImage(webcamImage: WebcamImage): void {
-    console.info('received webcam image', webcamImage);
-    //itt mentjuk a formcontrolnak magat a kepet
     this.cardForm.controls['img'].setValue(webcamImage.imageAsDataUrl);
   }
 
-  //ez figyelheti hogy van e tobb kamera csatlakoztatva
   public get nextWebcamObservable(): Observable<boolean | string> {
     return this.nextWebcam.asObservable();
   }
 
   public cameraWasSwitched(deviceId: string): void {
-    console.log('active device: ' + deviceId);
     this.deviceId = deviceId;
   }
 
@@ -128,7 +99,6 @@ export class NewCardComponent implements OnInit, OnDestroy {
   }
 
   public triggerSnapshot(): void {
-    console.log(this.cardForm.controls['img'].value);
     this.trigger.next();
   }
 

@@ -1,11 +1,9 @@
-a{
-  padding: 15px;
-}
 .div {
   display: block;
-  padding: 10px;
 }
-
+a{
+  margin-left: 10px;
+}
 @media print{
   .div{
     display: none;
