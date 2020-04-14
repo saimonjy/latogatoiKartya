@@ -11,10 +11,8 @@ import { DbServiceService } from '../db-service.service';
 export class PrintViewComponent implements OnInit , OnDestroy{
   public id: String;
   public subscription = new Subscription;
-  public elotag: String;
   public vezeteknev: String;
   public keresztnev: String;
-  public intezmeny_nev: String;
   public rendfokozat: String;
   public img: String;
 
@@ -29,10 +27,8 @@ export class PrintViewComponent implements OnInit , OnDestroy{
       this.id = params.get('id');
       if (this.id) {
         this.subscription.add(this.dbService.get(this.id).subscribe((result) => {
-            this.elotag = result[0].elotag;
             this.vezeteknev = result[0].vezeteknev;
             this.keresztnev = result[0].keresztnev;
-            this.intezmeny_nev = result[0].intezmeny_nev;
             this.rendfokozat = result[0].rendfokozat;
             this.img = result[0].img;
         }));

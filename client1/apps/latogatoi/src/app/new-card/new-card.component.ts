@@ -14,10 +14,8 @@ export class NewCardComponent implements OnInit, OnDestroy {
   private subscription = new Subscription();
   public id: String;
   public cardForm = new FormGroup({
-    elotag: new FormControl(null),
     vezeteknev: new FormControl(null),
     keresztnev: new FormControl(null),
-    intezmeny_nev: new FormControl(null),
     rendfokozat: new FormControl(null),
     img: new FormControl(null),
   });
@@ -41,10 +39,8 @@ export class NewCardComponent implements OnInit, OnDestroy {
       if (this.id) {
         this.subscription.add(this.dbService.get(this.id).subscribe((result) => {
           this.cardForm.setValue({
-            elotag: result[0].elotag,
             vezeteknev: result[0].vezeteknev,
             keresztnev: result[0].keresztnev,
-            intezmeny_nev: result[0].intezmeny_nev,
             rendfokozat: result[0].rendfokozat,
             img: result[0].img,
           });

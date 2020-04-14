@@ -4,7 +4,7 @@
     if (!$_GET['id']) {
         //TODO: ezt a hibauzenet format hasznald!!! csereld minden php
         $result = ['error' => [
-            'message' => 'ervenytelen azonosito: '. $_GET['id'],
+            'message' => 'ervenytelen azonosito!',
         ]];  
         die(json_encode($result));
     }

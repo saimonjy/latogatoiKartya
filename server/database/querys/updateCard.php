@@ -14,10 +14,8 @@ $db->safeSQLParams($post);
 $id = $_GET['id'];
 $db->safeSQLParams($id);
 $query = "UPDATE `kartyak` SET 
-            `elotag`='" . $post['elotag'] . "', 
             `vezeteknev`='" . $post['vezeteknev'] . "', 
             `keresztnev`='" . $post['keresztnev'] . "', 
-            `intezmeny_nev`='" . $post['intezmeny_nev'] . "', 
             `rendfokozat`='" . $post['rendfokozat'] . "', 
             `img`='" . $post['img'] . "' 
           WHERE `id`='" . $id . "'";

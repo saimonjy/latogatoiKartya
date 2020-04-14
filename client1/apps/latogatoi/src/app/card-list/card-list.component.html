@@ -1,9 +1,7 @@
 <mat-card class="card" *ngFor="let card of (httpGetCards | async)">
   <mat-card-content>
-    <div class="in" >{{card.intezmeny_nev}}</div>
     <div class="id">sorszam: {{card.id}} </div>  
     <div><img mat-card-image class="img" [src]="card.img"></div>
-    <div class="vn">{{card.elotag}} {{card.vezeteknev}}</div>
     <div class="kn">{{card.keresztnev}}</div>
     <div class="rf">{{card.rendfokozat}}</div>
     <div class="bt">

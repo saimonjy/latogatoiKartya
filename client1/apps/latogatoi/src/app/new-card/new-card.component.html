@@ -3,18 +3,6 @@
         <form id="form1" [formGroup]="cardForm" (ngSubmit)="onSubmit()">
             <table>
                 <tr>
-                    <td><br>
-                        <mat-form-field>
-                            <mat-select formControlName="elotag">
-                                <mat-option value="null"> </mat-option>
-                                <mat-option value="dr">dr</mat-option>
-                                <mat-option value="if">if</mat-option>
-                                <mat-option value="idősebb">idősebb</mat-option>
-                            </mat-select>
-                        </mat-form-field> 
-                    </td>
-                </tr>
-                <tr>
                     <td>            
                         <mat-form-field appearance="legacy">
                         <mat-label>Vezetéknév</mat-label>
@@ -30,15 +18,6 @@
                         </mat-form-field>
                     
                     </td>
-                </tr>
-                    <tr>
-                        <td>            
-                        <mat-form-field appearance="legacy">
-                        <mat-label>Intézmény név</mat-label>
-                        <input formControlName="intezmeny_nev" matInput>
-                        </mat-form-field>            
-                    </td>
-                </tr>
                 <tr>
                     <td>            
                         <mat-form-field appearance="legacy">
