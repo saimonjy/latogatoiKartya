@@ -12,6 +12,6 @@
     $db = new Database();
     $id = $_GET['id'];
     $db->safeSQLParams($id);
-    $query = 'SELECT * FROM `kartyak` WHERE `id` = "' . $id .'"';
+    $query = 'SELECT * FROM `latogatoi_csoportok` WHERE `id` = "' . $id .'"';
     echo $db->select($query);
 ?>
