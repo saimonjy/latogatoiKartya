@@ -4,7 +4,7 @@ $mysqlconfig = [
     'host' => 'localhost',
     'user' => 'root',
     'password' => '',
-    'db_name' => 'Latogatoi',
+    'db_name' => 'latogatoi',
 ];
 require($projectRoot . '/database/database.php');
 
