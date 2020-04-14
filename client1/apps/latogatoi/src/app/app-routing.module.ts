@@ -10,7 +10,7 @@ const routes: Routes = [
   {path:'kartya_adatok', component: CardDataComponent},
   {path:'kartya/:id', component: NewCardComponent},
   {path:'kartya', component: NewCardComponent},
-  {path:'nyomtatas',component: PrintViewComponent},
+  {path:'nyomtatas/:id',component: PrintViewComponent},
 ];
 
 @NgModule({

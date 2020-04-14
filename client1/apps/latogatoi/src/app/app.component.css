@@ -5,3 +5,9 @@ a{
   display: block;
   padding: 10px;
 }
+
+@media print{
+  .div{
+    display: none;
+  }
+}

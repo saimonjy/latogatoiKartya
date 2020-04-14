@@ -1,6 +1,60 @@
-td{
-    align-items:'right';
-}
+
 .card{
-    max-width: 400px;
+    position: relative;
+    width: 650px;
+    height: 408px;
+    top: 90px;
+    left: 190px;
+    overflow: hidden;
+    line-height: normal;
+    margin-top: 30px;
+}
+.bt{
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+}
+.id{
+    position: absolute;
+    left: 20px;
+    bottom: 30px;
+    font-size: 2em;
+    font-weight: bold;
+}
+.img{
+    position: absolute;
+    width:  226px;
+    height: 250px;
+    left: 46px;
+    top: 130px;
+}
+.in{
+    position: absolute;
+    font-weight: bold;
+    font-size: 2em;
+    max-width: 630px;
+    top: 30px;
+    right: 50px;
+}
+.kn{
+    position: absolute;
+    font-size: 2em;
+    font-weight: bold;
+    bottom: 170px;
+    left: 270px;
+    max-width: 370px;
+}
+.rf{
+    position: absolute;
+    font-size: 2em;
+    bottom: 110px;
+    left: 270px;
+}
+.vn{
+    position: absolute;
+    font-size: 2em;
+    font-weight: bold;
+    bottom: 220px;
+    left: 270px; 
+    max-width: 370;  
 }
