@@ -6,6 +6,6 @@ $mysqlconfig = [
     'password' => '',
     'db_name' => 'latogatoi',
 ];
-require($projectRoot . '/database/database.php');
+require($projectRoot . '/includes/database.php');
 
 ?>

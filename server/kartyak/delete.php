@@ -1,5 +1,5 @@
 <?php 
-    require(dirname(dirname(__DIR__)) . '/includes/config.php');
+    require(dirname(__DIR__) . '/includes/config.php');
     //a megjelenitett kartya sorszamat fogadom az view-tol. tolom a kartyat aminek a id == sorszammal.
     //1. $post atalakitasa olyan adatta ami a tablaban jo (ervenyesseg kezelese)
     if (!$_GET['id']) {
