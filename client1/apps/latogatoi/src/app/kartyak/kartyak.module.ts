@@ -11,6 +11,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import { WebcamModule } from 'ngx-webcam';
 
@@ -35,7 +36,8 @@ import { PrintViewComponent } from './print-view/print-view.component';
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
-    WebcamModule
+    WebcamModule,
+    RouterModule,
   ]
 })
 export class KartyakModule {}

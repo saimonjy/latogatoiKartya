@@ -1,1 +1,17 @@
-<p>lista works!</p>
+<table>
+    <thead>
+        <tr>
+            <th>Látogatói Csoport</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let latogatoiCsoport of latogatoiCsoportok | async">
+            <td>{{latogatoiCsoport.nev}}</td>
+            <td>
+                <a mat-raised-button [routerLink]="['/uj-latogatoi-csoport', latogatoiCsoport.id]" >Módosítás</a>
+                <a mat-raised-button (click)="torles(latogatoiCsoport.id)">Törlés</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
