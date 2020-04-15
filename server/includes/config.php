@@ -1,4 +1,5 @@
 <?php
+session_start();
 $projectRoot = dirname(__DIR__);
 $mysqlconfig = [
     'host' => 'localhost',

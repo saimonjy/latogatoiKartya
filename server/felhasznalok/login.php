@@ -1,17 +1,25 @@
 <?php 
     require(dirname(__DIR__) . '/includes/config.php');
 
-    if (!$_GET['id']) {
-        //TODO: ezt a hibauzenet format hasznald!!! csereld minden php
+    $post = json_decode(file_get_contents('php://input'), true);
+
+    if (!$post['nev'] || !$post['jelszo']) {
         $result = ['error' => [
-            'message' => 'ervenytelen azonosito!',
-        ]];  
+            'message' => 'Kérem töltse ki a mind a felhasznaloinév es a jelszo mezőket.',
+        ]];
         die(json_encode($result));
     }
-
     $db = new Database();
-    $id = $_GET['id'];
-    $db->safeSQLParams($id);
-    $query = 'SELECT * FROM `kartyak` WHERE `id` = "' . $id .'"';
-    echo $db->select($query);
+    $db->safeSQLParams($post);
+    $query = 'SELECT *
+              FROM `felhasznalok`
+              WHERE `nev` = "' . $post['nev'] .'"
+                AND `jelszo` = "' . md5($post['jelszo']) . '"';
+    $result = $db->select($query);
+    if (!$result['error']) {
+        $_SESSION['felhasznalo'] = $result['nev'];
+    } else {
+        unset($_SESSION['felhasznalo']);
+    }
+    echo $result;
 ?>
