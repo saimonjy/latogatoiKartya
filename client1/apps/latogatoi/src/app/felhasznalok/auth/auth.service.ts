@@ -40,4 +40,9 @@ export class AuthService {
       felhasznalo,
     );
   }
+  public kijelentkezes(): Observable<any> {
+    return this.http.get<any>(
+      `${env.basePath}${env.apiPath}/felhasznalok/logout.php`,
+    );
+  }
 }
