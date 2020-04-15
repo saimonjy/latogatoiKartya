@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LatogatoiCsoportokModule } from './latogatoi-csoportok/latogatoi-csoportok.module';
 import { KartyakModule } from './kartyak/kartyak.module';
+import { FelhasznalokModule } from './felhasznalok/felhasznalok.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,7 +19,8 @@ import { KartyakModule } from './kartyak/kartyak.module';
     BrowserAnimationsModule,
     MatToolbarModule,
     LatogatoiCsoportokModule,
-    KartyakModule
+    KartyakModule,
+    FelhasznalokModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
