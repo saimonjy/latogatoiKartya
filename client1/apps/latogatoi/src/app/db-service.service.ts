@@ -10,6 +10,11 @@ export interface LatogatoiCsoport {
   nev: string;
 }
 
+export interface Felhasznalo {
+  nev: string;
+  jelszo: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -64,5 +69,11 @@ export class DbServiceService {
   }
   public latogatoiCsoportTorlese(id: String): Observable<any> {
     return this.http.get<any>(`${env.basePath}${env.apiPath}/latogatoi-csoportok/delete.php?id=${id}`);
+  }
+  public regisztracio(felhasznalo: Felhasznalo): Observable<any> {
+    return this.http.post<any>(
+      `${env.basePath}${env.apiPath}/felhasznalok/register.php`,
+      felhasznalo,
+    );
   }
 }

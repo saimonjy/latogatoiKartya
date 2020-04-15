@@ -1,1 +1,32 @@
-<p>regisztracio works!</p>
+<mat-card class="card">
+  <mat-card-content>
+    <form id="form1" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <table>
+        <tr>
+          <td>
+            <mat-form-field appearance="legacy">
+              <mat-label>Felhasznaloi név</mat-label>
+              <input formControlName="nev" matInput />
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field appearance="legacy">
+              <mat-label>Jelszo</mat-label>
+              <input formControlName="jelszo" type="password" matInput />
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button mat-raised-button>Regisztrál</button>
+          </td>
+          <td>
+            <a mat-raised-button routerLink="/">Mégse</a>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </mat-card-content>
+</mat-card>
