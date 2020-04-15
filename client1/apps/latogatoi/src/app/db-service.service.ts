@@ -3,7 +3,6 @@ import { FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { environment as env }  from '../environments/environment';
 import { Observable } from 'rxjs';
-import { LatogatoiCsoportokModule } from './latogatoi-csoportok/latogatoi-csoportok.module';
 
 export interface LatogatoiCsoport {
   id?: number;
