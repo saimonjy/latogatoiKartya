@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { LatogatoiCsoportokModule } from './latogatoi-csoportok/latogatoi-csoportok.module';
 
 export interface LatogatoiCsoport {
-  id: number;
+  id?: number;
   nev: string;
 }
 
@@ -40,6 +40,26 @@ export class DbServiceService {
     return this.http
       .get<LatogatoiCsoport[]>(
         `${env.basePath}${env.apiPath}/latogatoi-csoportok/all.php`
+      );
+  }
+  public latogatoiCsoport(id: String): Observable<LatogatoiCsoport> {
+    return this.http
+      .get<LatogatoiCsoport>(
+        `${env.basePath}${env.apiPath}/latogatoi-csoportok/get.php?id=${id}`
+      );
+  }
+  public latogatoiCsoportHozzaadasa(ujLatogatoiCsoport: LatogatoiCsoport): Observable<any> {
+    return this.http
+      .post<any>(
+        `${env.basePath}${env.apiPath}/latogatoi-csoportok/new.php`,
+        ujLatogatoiCsoport,
+      );
+  }
+  public latogatoiCsoportModositasa(id: String, ujLatogatoiCsoport: LatogatoiCsoport): Observable<any> {
+    return this.http
+      .post<any>(
+        `${env.basePath}${env.apiPath}/latogatoi-csoportok/update.php?id=${id}`,
+        ujLatogatoiCsoport,
       );
   }
   public latogatoiCsoportTorlese(id: String): Observable<any> {

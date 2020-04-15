@@ -17,7 +17,7 @@
             $this->con->close();
         }
 
-        function select($query) {
+        function list($query) {
             global $mysqlconfig;
             if ($sqlresult = $this->con->query($query)) {
                 $result = [];
@@ -25,6 +25,28 @@
                     if ($row) {
                         $result[] = $row;
                     }
+                }
+                $sqlresult->close();
+            } else {
+                $result = ['error' => [
+                    'query' => $query,
+                    'message' => $this->con->error,
+                ]];    
+            }
+            return $this->json($result);
+        }
+
+        function select($query) {
+            global $mysqlconfig;
+            if ($sqlresult = $this->con->query($query)) {
+                $row = $sqlresult->fetch_assoc();
+                if ($row) {
+                    $result = $row;
+                } else {
+                    $result = ['error' => [
+                        'query' => $query,
+                        'message' => 'Nincs ilyen azonositoju sor az adatabzisban.',
+                    ]];    
                 }
                 $sqlresult->close();
             } else {

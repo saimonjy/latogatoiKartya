@@ -39,10 +39,10 @@ export class NewCardComponent implements OnInit, OnDestroy {
       if (this.id) {
         this.subscription.add(this.dbService.get(this.id).subscribe((result) => {
           this.cardForm.setValue({
-            vezeteknev: result[0].vezeteknev,
-            keresztnev: result[0].keresztnev,
-            rendfokozat: result[0].rendfokozat,
-            img: result[0].img,
+            vezeteknev: result.vezeteknev,
+            keresztnev: result.keresztnev,
+            rendfokozat: result.rendfokozat,
+            img: result.img,
           });
         }));
       }

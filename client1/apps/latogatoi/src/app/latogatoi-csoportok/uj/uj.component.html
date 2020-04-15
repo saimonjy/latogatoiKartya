@@ -1,1 +1,27 @@
-<p>uj works!</p>
+<mat-card class="card">
+  <mat-card-content>
+    <form id="form1" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <table>
+        <tr>
+          <td>
+            <mat-form-field appearance="legacy">
+              <mat-label>Latogatoi Csoport nev</mat-label>
+              <input formControlName="nev" matInput />
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td *ngIf="!id">
+            <button mat-raised-button>új csoport készitese</button>
+          </td>
+          <td *ngIf="id">
+            <button mat-raised-button>Mentés</button>
+          </td>
+          <td>
+            <a mat-raised-button routerLink="/latogatoi-csoportok">Mégse</a>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -14,7 +14,7 @@ $db->safeSQLParams($post);
 $id = $_GET['id'];
 $db->safeSQLParams($id);
 $query = "UPDATE `latogatoi_csoportok` SET 
-            `nev`='" . $post['nev'] . "', 
+            `nev`='" . $post['nev'] . "'
           WHERE `id`='" . $id . "'";
 
 echo $db->save($query);

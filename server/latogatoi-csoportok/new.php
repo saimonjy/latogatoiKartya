@@ -3,7 +3,7 @@
 
     $post = json_decode(file_get_contents('php://input'), true);
 
-    if (!$post['vezeteknev']) {
+    if (!$post['nev']) {
         $result = ['error' => [
             'message' => 'Kérem töltse ki a név mezőt.',
         ]];
@@ -12,9 +12,9 @@
     $db = new Database();
     $db->safeSQLParams($post);
     $query = 'INSERT INTO `latogatoi_csoportok` (
-                `nev`,
+                `nev`
               ) VALUES (
-                "' . $post['nev'] . '",
+                "' . $post['nev'] . '"
               )';
 
     echo $db->save($query);
