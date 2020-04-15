@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, NgModel } from '@angular/forms';
-import { DbServiceService } from '../../db-service.service';
+import { DbServiceService, LatogatoiCsoport } from '../../db-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, Subject, Observable } from 'rxjs';
 import { WebcamImage, WebcamInitError, WebcamUtil } from 'ngx-webcam';
@@ -12,11 +12,13 @@ import { WebcamImage, WebcamInitError, WebcamUtil } from 'ngx-webcam';
 })
 export class NewCardComponent implements OnInit, OnDestroy {
   private subscription = new Subscription();
+  public latogatoiCsoportok: Observable<LatogatoiCsoport[]>;
   public id: String;
   public cardForm = new FormGroup({
     vezeteknev: new FormControl(null),
     keresztnev: new FormControl(null),
     rendfokozat: new FormControl(null),
+    latogatoi_csoport: new FormControl(null),
     img: new FormControl(null),
   });
   public fotoKeszites = false;
@@ -34,6 +36,7 @@ export class NewCardComponent implements OnInit, OnDestroy {
   ) { }
   
   ngOnInit(): void {
+    this.latogatoiCsoportok = this.dbService.latogatoiCsoportok();
     this.subscription.add(this.route.paramMap.subscribe((params) => {
       this.id = params.get('id');
       if (this.id) {
@@ -42,6 +45,7 @@ export class NewCardComponent implements OnInit, OnDestroy {
             vezeteknev: result.vezeteknev,
             keresztnev: result.keresztnev,
             rendfokozat: result.rendfokozat,
+            latogatoi_csoport: result.latogatoi_csoport,
             img: result.img,
           });
         }));

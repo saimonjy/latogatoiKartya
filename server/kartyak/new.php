@@ -15,12 +15,14 @@
                 `vezeteknev`,
                 `keresztnev`,
                 `img`,
-                `rendfokozat`
+                `rendfokozat`,
+                `latogatoi_csoport`
               ) VALUES (
                 "' . $post['vezeteknev'] . '",
                 "' . $post['keresztnev'] . '",
                 "' . $post['img'] . '",
-                "' . $post['rendfokozat'] . '"
+                "' . $post['rendfokozat'] . '",
+                "' . $post['latogatoi_csoport'] . '"
               )';
 
     echo $db->save($query);

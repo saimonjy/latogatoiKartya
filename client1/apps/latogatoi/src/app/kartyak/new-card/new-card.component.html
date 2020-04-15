@@ -18,11 +18,24 @@
                         </mat-form-field>
                     
                     </td>
+                </tr>
                 <tr>
                     <td>            
                         <mat-form-field appearance="legacy">
                         <mat-label>rendfokozat</mat-label>
                         <input formControlName="rendfokozat" matInput>
+                        </mat-form-field>            
+                    </td>
+                </tr>
+                <tr>
+                    <td>            
+                        <mat-form-field appearance="legacy">
+                        <mat-label>Latogatoi Csoport</mat-label>
+                        <mat-select formControlName="latogatoi_csoport">
+                            <mat-option *ngFor="let latogatoiCsoport of (latogatoiCsoportok | async)" [value]="latogatoiCsoport.id">
+                              {{latogatoiCsoport.nev}}
+                            </mat-option>
+                        </mat-select>
                         </mat-form-field>            
                     </td>
                 </tr>

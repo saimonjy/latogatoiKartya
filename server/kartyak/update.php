@@ -17,6 +17,7 @@ $query = "UPDATE `kartyak` SET
             `vezeteknev`='" . $post['vezeteknev'] . "', 
             `keresztnev`='" . $post['keresztnev'] . "', 
             `rendfokozat`='" . $post['rendfokozat'] . "', 
+            `latogatoi_csoport`='" . $post['latogatoi_csoport'] . "', 
             `img`='" . $post['img'] . "' 
           WHERE `id`='" . $id . "'";
 
