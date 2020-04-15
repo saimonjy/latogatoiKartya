@@ -17,12 +17,12 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (this.auth.bejelentkezve) {
+    if (this.auth.bejelentkezve.value) {
       return true;
     }
     return this.auth.beVanJelentkezve().pipe(map(res => {
       if(res.loggedIn) {
-        this.auth.bejelentkezve = true;
+        this.auth.bejelentkezve.next(true);
         return true;
       } else {
         this.router.navigate(['bejelentkezes']);

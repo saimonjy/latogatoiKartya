@@ -11,12 +11,12 @@ import { Subscription } from 'rxjs';
 export class AppComponent {
   private subscription = new Subscription();
   constructor(
-    private auth: AuthService,
+    public auth: AuthService,
     private router: Router,
   ) {}
 
   kijelentkezes() {
-    this.auth.bejelentkezve = false;
+    this.auth.bejelentkezve.next(false);
     this.subscription.add(
       this.auth.kijelentkezes().subscribe((result) => {
         if (result.sikeres) {

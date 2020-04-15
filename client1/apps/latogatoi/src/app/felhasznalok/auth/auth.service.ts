@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment as env }  from '../../../environments/environment';
-import { Observable } from 'rxjs';
+import { Observable, Subject, BehaviorSubject } from 'rxjs';
 
 export interface BejelentkezesiStatusz {
   loggedIn: boolean;
@@ -16,7 +16,7 @@ export interface Felhasznalo {
   providedIn: 'root'
 })
 export class AuthService {
-  public bejelentkezve: boolean;
+  public bejelentkezve = new BehaviorSubject(false);
 
   constructor(private http: HttpClient) { }
 

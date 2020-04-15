@@ -1,12 +1,13 @@
 <mat-toolbar color="#f2f2ff">
   <mat-toolbar-row>
     <div class="div">
-      <a routerLink="/"> Kártyák </a>
-      <a routerLink="/kartya"> Új Kártya </a>
-      <a routerLink="/latogatoi-csoportok"> Látogatói Csoportok </a>
-      <a routerLink="/uj-latogatoi-csoport"> Új Látogatói Csoportok </a>
-      <a routerLink="/regisztracio"> Regisztráció </a>
-      <a (click)="kijelentkezes()"> Kijelentkezés </a>
+      <a routerLink="/" *ngIf="(auth.bejelentkezve | async)"> Kártyák </a>
+      <a routerLink="/kartya" *ngIf="(auth.bejelentkezve | async)"> Új Kártya </a>
+      <a routerLink="/latogatoi-csoportok" *ngIf="(auth.bejelentkezve | async)"> Látogatói Csoportok </a>
+      <a routerLink="/uj-latogatoi-csoport" *ngIf="(auth.bejelentkezve | async)"> Új Látogatói Csoportok </a>
+      <a (click)="kijelentkezes()" *ngIf="(auth.bejelentkezve | async)"> Kijelentkezés </a>
+      <a routerLink="/regisztracio" *ngIf="!(auth.bejelentkezve | async)"> Regisztráció </a>
+      <a routerLink="/bejelentkezes" *ngIf="!(auth.bejelentkezve | async)"> Bejelentkezés </a>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
