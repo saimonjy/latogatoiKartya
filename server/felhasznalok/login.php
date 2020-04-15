@@ -15,11 +15,11 @@
               FROM `felhasznalok`
               WHERE `nev` = "' . $post['nev'] .'"
                 AND `jelszo` = "' . md5($post['jelszo']) . '"';
-    $result = $db->select($query);
-    if (!$result['error']) {
+    $result = $db->select($query, false);
+    if (!isset($result['error'])) {
         $_SESSION['felhasznalo'] = $result['nev'];
     } else {
         unset($_SESSION['felhasznalo']);
     }
-    echo $result;
+    echo $db->json($result);
 ?>

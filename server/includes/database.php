@@ -36,7 +36,7 @@
             return $this->json($result);
         }
 
-        function select($query) {
+        function select($query, $json = true) {
             global $mysqlconfig;
             if ($sqlresult = $this->con->query($query)) {
                 $row = $sqlresult->fetch_assoc();
@@ -55,7 +55,7 @@
                     'message' => $this->con->error,
                 ]];    
             }
-            return $this->json($result);
+            return $json ? $this->json($result) : $result;
         }
 
         function save($query) {
@@ -88,7 +88,6 @@
 
         function json($data) {
             return json_encode($data);
-
         }
         
         function safeSQLParams(&$params) {

@@ -7,6 +7,7 @@ import { ListaComponent } from './latogatoi-csoportok/lista/lista.component';
 import { UjComponent } from './latogatoi-csoportok/uj/uj.component';
 import { RegisztracioComponent } from './felhasznalok/regisztracio/regisztracio.component';
 import { AuthGuard } from './felhasznalok/auth/auth.guard';
+import { BejelentkezesComponent } from './felhasznalok/bejelentkezes/bejelentkezes.component';
 
 const routes: Routes = [
   { 
@@ -45,7 +46,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   { path: 'regisztracio', component: RegisztracioComponent },
-  { path: 'login', component: RegisztracioComponent }
+  { path: 'bejelentkezes', component: BejelentkezesComponent }
 ];
 
 @NgModule({

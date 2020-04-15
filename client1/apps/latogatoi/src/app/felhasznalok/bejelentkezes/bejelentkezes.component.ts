@@ -1,16 +1,15 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 
-
 @Component({
-  selector: 'client1-regisztracio',
-  templateUrl: './regisztracio.component.html',
-  styleUrls: ['./regisztracio.component.css']
+  selector: 'client1-bejelentkezes',
+  templateUrl: './bejelentkezes.component.html',
+  styleUrls: ['./bejelentkezes.component.css']
 })
-export class RegisztracioComponent implements OnInit, OnDestroy {
+export class BejelentkezesComponent implements OnInit, OnDestroy {
   private subscription = new Subscription();
   public form = new FormGroup({
     nev: new FormControl(null),
@@ -31,7 +30,7 @@ export class RegisztracioComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     this.subscription.add(
-      this.auth.regisztracio(this.form.value)
+      this.auth.bejelentkezes(this.form.value)
         .subscribe((result) => {
           if (result.error) {
             alert(result.error.message);

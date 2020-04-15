@@ -9,10 +9,11 @@ import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
 import { AuthService } from './auth/auth.service';
+import { BejelentkezesComponent } from './bejelentkezes/bejelentkezes.component';
 
 
 @NgModule({
-  declarations: [RegisztracioComponent],
+  declarations: [RegisztracioComponent, BejelentkezesComponent],
   imports: [
     CommonModule,
     RouterModule,

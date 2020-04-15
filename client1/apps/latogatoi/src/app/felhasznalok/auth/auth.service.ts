@@ -7,6 +7,11 @@ export interface BejelentkezesiStatusz {
   loggedIn: boolean;
 }
 
+export interface Felhasznalo {
+  nev: string;
+  jelszo: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,5 +25,19 @@ export class AuthService {
       .get<BejelentkezesiStatusz>(
         `${env.basePath}${env.apiPath}/felhasznalok/loggedin.php`
       );
+  }
+
+  public regisztracio(felhasznalo: Felhasznalo): Observable<any> {
+    return this.http.post<any>(
+      `${env.basePath}${env.apiPath}/felhasznalok/register.php`,
+      felhasznalo,
+    );
+  }
+
+  public bejelentkezes(felhasznalo: Felhasznalo): Observable<any> {
+    return this.http.post<any>(
+      `${env.basePath}${env.apiPath}/felhasznalok/login.php`,
+      felhasznalo,
+    );
   }
 }
