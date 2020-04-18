@@ -1,6 +1,6 @@
 <mat-card class="card">
     <mat-card-content>
-        <form id="form1" [formGroup]="cardForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="cardForm" (ngSubmit)="onSubmit()">
             <table>
                 <tr>
                     <td>            
@@ -32,6 +32,7 @@
                         <mat-form-field appearance="legacy">
                         <mat-label>Latogatoi Csoport</mat-label>
                         <mat-select formControlName="latogatoi_csoport">
+                            <mat-option value=" "></mat-option>
                             <mat-option *ngFor="let latogatoiCsoport of (latogatoiCsoportok | async)" [value]="latogatoiCsoport.id">
                               {{latogatoiCsoport.nev}}
                             </mat-option>

@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { DbServiceService } from '../../db-service.service';
+import { DbServiceService, LatogatoiCsoport } from '../../db-service.service';
 import { Subscription} from 'rxjs';
 
 @Component({
@@ -10,11 +10,12 @@ import { Subscription} from 'rxjs';
 
 export class CardListComponent implements OnInit, OnDestroy{
 
-  public httpGetCards: any;
+  public intezmenynev = "Verebély László Szakgimnázium és Szakközépiskola";
+  public cards: any;
   private subscription= new Subscription;
   
-  constructor(private dbService: DbServiceService){
-    this.getAllCards();
+  constructor(public dbService: DbServiceService){
+    this.all();
    }
 
    ngOnInit(): void {
@@ -24,8 +25,8 @@ export class CardListComponent implements OnInit, OnDestroy{
     this.subscription.unsubscribe();
   }
 
-  getAllCards(){
-    this.httpGetCards = this.dbService.all();
+  all(){
+    this.cards = this.dbService.allLcs();
   }
   
   delete(id: any){
@@ -35,7 +36,7 @@ export class CardListComponent implements OnInit, OnDestroy{
           alert(result.error.message);
         }
         else{
-          this.getAllCards();
+          this.all();
         }
       }));
     }

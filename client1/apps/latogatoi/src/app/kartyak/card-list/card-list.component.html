@@ -1,10 +1,12 @@
-<mat-card class="card" *ngFor="let card of (httpGetCards | async)">
+<mat-card class="card" *ngFor="let card of (cards | async)">
   <mat-card-content>
     <div class="id">sorszam: {{card.id}} </div>  
     <div><img mat-card-image class="img" [src]="card.img"></div>
+    <div class="in">{{intezmenynev}}</div>
     <div class="vn">{{card.vezeteknev}}</div>
     <div class="kn">{{card.keresztnev}}</div>
     <div class="rf">{{card.rendfokozat}}</div>
+    <div class="lcs">{{card.nev}}</div>
     <div class="bt">
       <a mat-raised-button [routerLink]="['/kartya',card.id]">Szerkesztés</a>
       <a mat-raised-button [routerLink]="['/nyomtatas',card.id]">Nyomtatási kép</a>

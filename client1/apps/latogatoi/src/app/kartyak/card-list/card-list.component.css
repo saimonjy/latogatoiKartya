@@ -3,16 +3,23 @@
     position: relative;
     width: 650px;
     height: 408px;
-    top: 90px;
+    top: 50px;
     left: 190px;
     overflow: hidden;
     line-height: normal;
-    margin-top: 30px;
+    margin-top: 30px;;
 }
 .bt{
     position: absolute;
     right: 20px;
     bottom: 20px;
+}
+.in{
+    position: absolute;
+    left: 15px;
+    top: 30px;
+    font-size: 2em;
+    font-weight: bold;
 }
 .id{
     position: absolute;
@@ -32,21 +39,30 @@
     position: absolute;
     font-size: 2em;
     font-weight: bold;
-    bottom: 170px;
+    bottom: 190px;
     left: 270px;
     max-width: 370px;
 }
+.lcs
+{
+    position: absolute;
+    font-size: 2em;
+    font-weight: bold;
+    bottom: 90px;
+    left: 270px;
+    max-width: 370px;
+} 
 .rf{
     position: absolute;
     font-size: 2em;
-    bottom: 110px;
+    bottom: 140px;
     left: 270px;
 }
 .vn{
     position: absolute;
     font-size: 2em;
     font-weight: bold;
-    bottom: 220px;
+    bottom: 240px;
     left: 270px; 
     max-width: 370;  
 }

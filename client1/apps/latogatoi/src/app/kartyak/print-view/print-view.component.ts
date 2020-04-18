@@ -9,9 +9,11 @@ import { DbServiceService } from '../../db-service.service';
   styleUrls: ['./print-view.component.css']
 })
 export class PrintViewComponent implements OnInit , OnDestroy{
+  public intezmenynev = "Verebély László Szakgimnázium és Szakközépiskola";
   public id: String;
   public subscription = new Subscription;
   public vezeteknev: String;
+  public latogatoiCsnev: String;
   public keresztnev: String;
   public rendfokozat: String;
   public img: String;
@@ -26,11 +28,12 @@ export class PrintViewComponent implements OnInit , OnDestroy{
     this.subscription.add(this.route.paramMap.subscribe((params) => {
       this.id = params.get('id');
       if (this.id) {
-        this.subscription.add(this.dbService.get(this.id).subscribe((result) => {
-            this.vezeteknev = result[0].vezeteknev;
-            this.keresztnev = result[0].keresztnev;
-            this.rendfokozat = result[0].rendfokozat;
-            this.img = result[0].img;
+        this.subscription.add(this.dbService.getLcs(this.id).subscribe((result) => {
+            this.vezeteknev = result.vezeteknev;
+            this.keresztnev = result.keresztnev;
+            this.latogatoiCsnev = result.nev;
+            this.rendfokozat = result.rendfokozat;
+            this.img = result.img;
         }));
       }
     }));
@@ -38,5 +41,8 @@ export class PrintViewComponent implements OnInit , OnDestroy{
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
+  print(): void{
+    window.print();
+  };
 
 }

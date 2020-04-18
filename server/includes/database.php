@@ -45,7 +45,7 @@
                 } else {
                     $result = ['error' => [
                         'query' => $query,
-                        'message' => 'Nincs ilyen azonositoju sor az adatabzisban.',
+                        'message' => 'Nincs ilyen azonositoju sor az adatabzisban.' .$this->con->error ,
                     ]];    
                 }
                 $sqlresult->close();
@@ -64,7 +64,7 @@
             } else {
                 $result = ['error' => [
                     'query' => $query,
-                    'message' => $this->con->error,
+                    'message' => 'válasszon látogatói csoportot',
                 ]];    
             }
             return $this->json($result);

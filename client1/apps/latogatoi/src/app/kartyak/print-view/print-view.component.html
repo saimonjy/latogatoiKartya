@@ -1,10 +1,17 @@
-<mat-card class="card"> 
-  <mat-card-content> 
-    <div class="id">sorszam: {{id}} </div>
-    <div><img  mat-card-image class="img" [src]="img"></div>
-    <div class="vn">{{vezeteknev}}</div>
-    <div class="kn">{{keresztnev}}</div>
-    <div class="rf">{{rendfokozat}}</div>
-      <a class="bt" mat-raised-button routerLink='/'>Vissza</a>
-  </mat-card-content>
-</mat-card>
+<section class="s" >
+  <mat-card class="card"> 
+    <mat-card-content> 
+      <div class="id">sorszam: {{id}} </div>
+      <div><img  mat-card-image class="img" [src]="img"></div>
+      <div class="in">{{intezmenynev}}</div>
+      <div class="vn">{{vezeteknev}}</div>
+      <div class="kn">{{keresztnev}}</div>
+      <div class="rf">{{rendfokozat}}</div>
+      <div class="lcs">{{latogatoiCsnev}}</div>
+      <div class="bt">
+        <button  mat-raised-button routerLink='/'>Vissza</button>
+        <button  mat-raised-button (click)="print()" >Nyontatas</button>
+      </div>  
+    </mat-card-content>
+  </mat-card>
+</section>

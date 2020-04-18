@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  basePath: '/latogatoiKartya',
+  basePath: '/rendeszeti/Poc/latogatoikartya',
   apiPath: '/server',
 };
 

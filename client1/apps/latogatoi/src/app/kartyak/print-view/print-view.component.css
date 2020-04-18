@@ -1,17 +1,24 @@
 
     .card{
         position: relative;
-        width: 325px;
-        height: 204px;
+        width: 85mm;
+        height: 54mm;
         overflow: hidden;
-        top: 100;
-        left: 100;
+        top: 10px;
+        left: 10px;
         line-height: normal;
     }
     .bt{
         position: absolute;
         right: 10px;
         bottom: 10px;
+    }
+    .in{
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        font-size: larger;
+        font-weight: bold;
     }
     .img{
         position: absolute;
@@ -34,10 +41,17 @@
         bottom: 110px;
         left: 135px;
     }
+    .lcs{
+        position: absolute;
+        font-size: larger;
+        font-weight: bold;
+        bottom: 75px;
+        left: 135px;
+    }
     .rf{
         position: absolute;
 
-        bottom: 90px;
+        bottom: 95px;
         left: 135px;
     }
     .vn{
@@ -51,5 +65,9 @@
     @media print{
         .bt{
             display: none;
+        }.card{
+            border-style: dashed;
+            border-color: brown;
         }
+        
     }

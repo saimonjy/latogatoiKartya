@@ -17,9 +17,16 @@ export class DbServiceService {
   public all(){
     return this.http.get(`${env.basePath}${env.apiPath}/kartyak/all.php`);
   }
+  public allLcs(){
+    return this.http.get(`${env.basePath}${env.apiPath}/kartyak/allLcs.php`);
+  }
   public get(id: String){
     return this.http
       .get<any>(`${env.basePath}${env.apiPath}/kartyak/get.php?id=${id}`);
+  }
+  public getLcs(id: String){
+    return this.http
+      .get<any>(`${env.basePath}${env.apiPath}/kartyak/getLcs.php?id=${id}`);
   }
   public save(formGroup: FormGroup){
     return this.http

@@ -1,11 +1,11 @@
-<mat-card class="card">
+<mat-card>
   <mat-card-content>
-    <form id="form1" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <table>
         <tr>
           <td>
             <mat-form-field appearance="legacy">
-              <mat-label>Felhasznaloi név</mat-label>
+              <mat-label>Felhasznalói név</mat-label>
               <input formControlName="nev" matInput />
             </mat-form-field>
           </td>
@@ -13,7 +13,7 @@
         <tr>
           <td>
             <mat-form-field appearance="legacy">
-              <mat-label>Jelszo</mat-label>
+              <mat-label>Jelszó</mat-label>
               <input formControlName="jelszo" type="password" matInput />
             </mat-form-field>
           </td>
